@@ -1,4 +1,4 @@
-package com.inn.restaurant.service;
+package com.inn.restaurant.service.user;
 
 import com.inn.restaurant.dto.UserDto;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +15,8 @@ public interface UserService {
     ResponseEntity<List<UserDto>> getAllUsers();
 
     ResponseEntity <String > update(Map<String, String> requestMap);
+
+    ResponseEntity<String> checkToken();
 
     ResponseEntity<String> changePassword(Map<String, String> requestMap);
 

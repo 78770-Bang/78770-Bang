@@ -1,4 +1,4 @@
-package com.inn.restaurant.serviceImpl;
+package com.inn.restaurant.serviceImpl.user;
 
 import com.google.common.base.Strings;
 import com.inn.restaurant.jwt.CustomerUserDetailsService;
@@ -7,7 +7,7 @@ import com.inn.restaurant.jwt.JwtUtil;
 import com.inn.restaurant.model.User;
 import com.inn.restaurant.constents.RestaurantConstants;
 import com.inn.restaurant.repository.UserRepo;
-import com.inn.restaurant.service.UserService;
+import com.inn.restaurant.service.user.UserService;
 import com.inn.restaurant.utils.EmailUtils;
 import com.inn.restaurant.utils.RestaurantUtils;
 import com.inn.restaurant.dto.UserDto;
@@ -31,7 +31,7 @@ import java.util.*;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserRepo userRepo;
+    private UserRepo userRepo;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -161,6 +161,11 @@ public class UserServiceImpl implements UserService {
             ex.printStackTrace();
         }
         return RestaurantUtils.getResponseEntity(RestaurantConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<String> checkToken() {
+       return RestaurantUtils.getResponseEntity("Token is valid", HttpStatus.OK);
     }
 
     @Override

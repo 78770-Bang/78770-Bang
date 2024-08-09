@@ -1,5 +1,7 @@
-package com.inn.restaurant.jwt;
+package com.inn.restaurant.configs;
 
+import com.inn.restaurant.jwt.CustomerUserDetailsService;
+import com.inn.restaurant.jwt.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +33,7 @@ public class WebSecurityConfig  {
     }
 
     @Bean
-    public AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder builder = http.getSharedObject(AuthenticationManagerBuilder.class);
         builder.userDetailsService(customerUserDetailsService);
         return builder.build();

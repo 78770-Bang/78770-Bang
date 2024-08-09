@@ -4,16 +4,22 @@ package com.inn.restaurant.jwt;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.FilterChain;
 import java.io.IOException;
+import java.util.List;
+
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -33,6 +39,7 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
                                     HttpServletResponse httpServletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
+
 
         if(httpServletRequest.getServletPath().matches("/user/login|/user/forgotPassword|/user/resetPassword|/user/signup")) {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
@@ -64,6 +71,7 @@ public class JwtFilter extends OncePerRequestFilter {
     public boolean isAdmin() {
         return "admin" .equalsIgnoreCase((String) claims.get("role"));
     }
+
     public boolean isUser() {
         return "user" .equalsIgnoreCase((String) claims.get("role"));
     }

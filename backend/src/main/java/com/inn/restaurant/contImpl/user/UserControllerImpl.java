@@ -1,8 +1,8 @@
-package com.inn.restaurant.contImpl;
+package com.inn.restaurant.contImpl.user;
 
 import com.inn.restaurant.constents.RestaurantConstants;
-import com.inn.restaurant.controller.UserController;
-import com.inn.restaurant.service.UserService;
+import com.inn.restaurant.controller.user.UserController;
+import com.inn.restaurant.service.user.UserService;
 import com.inn.restaurant.utils.RestaurantUtils;
 import com.inn.restaurant.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public ResponseEntity<String> update(Map<String, String> requestMap) {
+    public ResponseEntity<String> update(@RequestBody Map<String, String> requestMap) {
        try {
            return userService.update(requestMap);
        }catch (Exception ex){
@@ -62,6 +62,12 @@ public class UserControllerImpl implements UserController {
 
     @Override
     public ResponseEntity<String> checkToken() {
+        try {
+            return userService.checkToken();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return RestaurantUtils.getResponseEntity(RestaurantConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 
