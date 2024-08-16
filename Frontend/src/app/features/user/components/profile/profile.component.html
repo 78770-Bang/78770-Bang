@@ -1,0 +1,54 @@
+<div class="user-profile-container">
+  <div class="user-profile-left">
+    <div class="profile-info">
+      <img src="assets/avatar-placeholder.png"  alt="User Avatar">
+      <p class="user-name">name</p>
+      <p class="user-id">user id</p>
+      <button>Edit Profile</button>
+    </div>
+    <div class="profile-stats">
+      <p>Bookmarked Restaurants: 11</p>
+      <p>Reviews Posted: 50</p>
+    </div>
+  </div>
+
+  <div class="user-profile-right">
+    <ul class="profile-tabs">
+      <li
+        class="tab-button"
+        [class.active]="activeTab === 'order-history'"
+        (click)="setActiveTab('order-history')"
+      >
+        Order History
+      </li>
+      <li
+        class="tab-button"
+        [class.active]="activeTab === 'bookings'"
+        (click)="setActiveTab('bookings')"
+      >
+        Bookings
+      </li>
+      <li
+        class="tab-button"
+        [class.active]="activeTab === 'upload'"
+        (click)="setActiveTab('upload')"
+      >
+        Upload
+      </li>
+      <li
+        class="tab-button"
+        [class.active]="activeTab === 'bookmarks'"
+        (click)="setActiveTab('bookmarks')"
+      >
+        Bookmarks
+      </li>
+    </ul>
+
+    <div class="profile-content">
+      <p *ngIf="activeTab === 'order-history'">Content for Order History</p>
+      <p *ngIf="activeTab === 'bookings'">Content for Bookings</p>
+      <p *ngIf="activeTab === 'upload'">Content for Upload</p>
+      <p *ngIf="activeTab === 'bookmarks'">Content for Bookmarks</p>
+    </div>
+  </div>
+</div>

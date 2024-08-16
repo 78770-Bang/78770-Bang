@@ -1,0 +1,59 @@
+.bg {
+    background-color: #000000;
+  }
+  
+  .parent {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .child {
+    padding: 50px;
+    position: absolute;
+    width: 380px;
+    background-color: rgb(255, 255, 255);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 1px 15px 7px rgba(201, 22, 22, 0.1);
+    border-radius: 5px;
+    margin-bottom: 22px;
+  }
+  
+  .login-form {
+      nz-spin {
+        display: inline-block;
+        margin-right: 16px;
+      }
+  }
+      
+  nz-form {
+    max-width: 600px;
+  }
+  
+  nz-form-control {
+    min-width: 280px;
+  }
+  
+  .login-form-margin {
+    margin-bottom: 16px;
+  }
+  
+  .login-form-button {
+    width: 100%;
+  }
+  
+  button {
+    background-color: #001529;
+  }
+  
+  button {
+    background-color: #001529;
+    color: white; /* Ensure text color is white for better readability */
+  }
+  
+  button[nzType="default"] {
+    background-color: #f0f0f0;
+    color: black;
+  }

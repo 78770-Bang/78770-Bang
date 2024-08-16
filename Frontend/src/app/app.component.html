@@ -1,0 +1,49 @@
+<!-- Unauthenticated User Navbar -->
+<div *ngIf="!isUserLoggedIn">
+  <nz-header class="navbar" type="flex" style="background-color: rgb(45, 150, 220);">
+    <div class="logo">
+      <span>DINE DIRECT</span>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/">Home</a>
+      <a routerLink="/user/signup">Sign Up</a>
+      <a routerLink="/user/login">Log In</a>
+    </div>
+  </nz-header>
+</div>
+
+<!-- Authenticated User Navbar -->
+<div *ngIf="isUserLoggedIn">
+  <nz-header class="navbar-user" type="flex" style="background-color: rgb(45, 150, 220);">
+    <div class="logo">
+      <span>DINE DIRECT</span>
+    </div>
+    <div class="nav-links-user">
+      <a routerLink="/">Dashboard</a>
+      <a routerLink="/about">About</a>
+      <a routerLink="/contact">Contact</a>
+      <div class="profile-avatar" (click)="toggleDropdown()">
+        <img src="/assets/images/avatar.png" alt="User Avatar" />
+        <div class="dropdown-menu" *ngIf="isDropdownVisible">
+          <a routerLink="/user/profile">
+            <img src="/assets/images/avatar.png" alt="Profile Icon" class="icon" />
+            Profile
+          </a>
+          <a routerLink="/settings">
+            <img src="/assets/images/setting.jpg" alt="Settings Icon" class="icon" />
+            Settings
+          </a>
+          <a routerLink="/help">
+            <img src="/assets/images/help.jpg" alt="Help Icon" class="icon" />
+            Help
+          </a>
+          <a routerLink="/logout" (click)="logout()" routerLinkActive="active">
+            <img src="/assets/images/logout.jpg" alt="Logout Icon" class="icon" />
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </nz-header>
+</div>
+<router-outlet></router-outlet>
